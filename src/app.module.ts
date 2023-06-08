@@ -2,6 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getMongoDBConfig } from './config/mongo.config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -11,6 +14,9 @@ import { MongooseModule } from '@nestjs/mongoose';
       useFactory: getMongoDBConfig,
       inject: [ConfigService],
     }),
+    UserModule,
+    AuthModule,
+    MailModule,
   ],
   controllers: [],
   providers: [],
